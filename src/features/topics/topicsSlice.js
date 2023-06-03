@@ -12,7 +12,11 @@ const options = {
           icon: icon,
           quizIds: []
         };
-      }
+      },
+      addQuizId: (state, action) => {
+        const { quizId, topicId } = action.payload;
+        state.topics[topicId].quizIds.push(quizId);
+      },
     },
     // extra reducers here
   };
@@ -20,6 +24,6 @@ const options = {
   export const topicsSlice = createSlice(options);
   export const selectTopics = (state) => state.topics.topics;
   // actions + reducers
-  export const { addTopic } = topicsSlice.actions;
+  export const { addTopic, addQuizId } = topicsSlice.actions;
   export default topicsSlice.reducer;
   
